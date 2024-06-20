@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Event Management</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Upcoming Events</a></li>
+                    <li><a href="events.html">Past Events</a></li>
+                    <li><a href="about-us.html">About-us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="event-details" class="event-details">
+            <!-- Event details will be dynamically loaded here -->
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const eventDetailsContainer = document.getElementById('event-details');
+            const urlParams = new URLSearchParams(window.location.search);
+            const eventId = parseInt(urlParams.get('id'));
+
+            const events = [
+                {
+                    id: 1,
+                    title: "DJ Night",
+                    date: "2024-07-01",
+                    time: "8:00 PM",
+                    venue: "Main Hall",
+                    description: "Join us for an electrifying night with top DJs.",
+                    imageUrl: "https://cdn.alivenetwork.com/media/partydjs-4.jpg?width=767&height=575&aspect_ratio=4:3&class=largefull"
+
+                },
+                {
+                    id: 2,
+                    title: "Music Contest",
+                    date: "2024-07-15",
+                    time: "6:00 PM",
+                    venue: "Auditorium",
+                    description: "Participants from around the region showcasing their musical talents.",
+                    imageUrl: "https://img.freepik.com/premium-vector/music-contest-stage-with-guitar-microphone_37787-1033.jpg"
+                },
+                {
+                    id: 3,
+                    title: "Food Festival",
+                    date: "2024-07-20",
+                    time: "5:00 PM",
+                    venue: "Auditorium",
+                    description: "Participants from around the region showcasing their musical talents.",
+                    imageUrl: "https://www.tourmyindia.com/blog//wp-content/uploads/2019/03/National-Street-Food-Festival.jpg"
+                },
+                {
+                    id: 4,
+                    title: "Fashion Show",
+                    date: "2024-07-23",
+                    time: "8:00 PM",
+                    venue: "Auditorium",
+                    description: "Participants from around the region showcasing their musical talents.",
+                    imageUrl: "https://iso.500px.com/wp-content/uploads/2020/02/Christophe-Josse-Finale-By-Milton-Tan.jpeg"
+                },
+                {
+                    id: 5,
+                    title: "Art Exhibition",
+                    date: "2024-07-25",
+                    time: "4:00 PM",
+                    venue: "Auditorium",
+                    description: "Participants from around the region showcasing their musical talents.",
+                    imageUrl: "https://d197irk3q85upd.cloudfront.net/catalog/product/cache/95dbdf78ad5a0d4b547132f80fbac8f3/e/x/exhibition_banner_1.jpg"
+                },
+                {
+                    id: 6,
+                    title: "Comedy Night",
+                    date: "2024-07-26",
+                    time: "8:00 PM",
+                    venue: "Auditorium",
+                    description: "Participants from around the region showcasing their musical talents.",
+                    imageUrl: "https://thebasie.org/wp-content/uploads/2022/03/R1-OPEN-MIC-BASIE-CINEMAS-1240x698-1-1024x576.jpg"
+                },
+                {
+                    id: 11,
+                    title: "Bike Exhibition",
+                    date: "2024-07-01",
+                    time: "8:00 PM",
+                    venue: "Main Hall",
+                    description: "Join us for an electrifying night top modified bike from all over the world.",
+                    imageUrl: "https://wide.piaggiogroup.com/articles/events/il-gruppo-piaggio-al-motor-bike-expo-di-verona/foto1.jpg"
+                },
+                {
+                    id: 12,
+                    title: "Car Expo",
+                    date: "2024-07-15",
+                    time: "6:00 PM",
+                    venue: "Auditorium",
+                    description: "Participants from around the region showcasing their extra ordinary cars.",
+                    imageUrl: "https://www.exhibitionshowcase.com/wp-content/uploads/2022/03/auto-expo_c282b7f2-0e86-11e8-9ced-6b0f736beaca.jpg"
+                },
+                {
+                    id: 13,
+                    title: "Stand-up Comedy ",
+                    date: "2024-07-20",
+                    time: "5:00 PM",
+                    venue: "Auditorium",
+                    description: "Participants from around the region showcasing their sarcasm skills.",
+                    imageUrl: "https://classiebit.com/storage/posts/April2024/VfNU58WA3O72tq2bkBWQ.webp"
+                },
+                {
+                    id: 14,
+                    title: "Fancy Dress",
+                    date: "2024-07-20",
+                    time: "5:00 PM",
+                    venue: "Auditorium",
+                    description:  "Participants from around the region showcasing their extraordinary dressing sense.",
+                    imageUrl: "https://images.halloweencostumes.co.uk/media/164/adult-costumes/costume-ideas-for-adults.jpg"
+                },
+                {
+                    id: 15,
+                    title: "Party Pizzazz",
+                    date: "2024-07-20",
+                    time: "5:00 PM",
+                    venue: "Auditorium",
+                    description: "Participants from around the region showcasing taste for pizza.",
+                    imageUrl: "https://t3.ftcdn.net/jpg/03/16/47/42/360_F_316474238_69Akk15i3gsEp78WNv9aB5TMXFLO9YD6.jpg"
+                },
+                {
+                    id: 16,
+                    title: "Fitness Frenzy",
+                    date: "2024-07-20",
+                    time: "5:00 PM",
+                    venue: "Auditorium",
+                    description: "Participants from around the region showcasing their musical talents.",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTArwhrqpdA02cnydB6s5h7P3Ib_D50FkErnQ&usqp=CAU"
+                }
+                // Add more events as needed
+            ];
+
+            // Find the event by ID
+            const event = events.find(event => event.id === eventId);
+
+            // Display event details
+            eventDetailsContainer.innerHTML = `
+                <div class="event-details">
+                    <img src="${event.imageUrl}" alt="${event.title}">
+                    <h1>${event.title}</h1>
+                    <p>Date: ${event.date}</p>
+                    <p>Time: ${event.time}</p>
+                    <p>Venue: ${event.venue}</p>
+                    <p>Description: ${event.description}</p>
+                </div>
+            `;
+
+            const otherevent = events.find(event => event.id != eventId);
+
+            // Display event details
+            othereventDetailsContainer.innerHTML = `
+                <div class="event-details">
+                    <b>${otherevent.title}:- </b>
+                    <i>${event.description}</i>
+                </div>
+            `;
+
+
+
+        });
+
+    </script>
+</body>
+
+</html>
